@@ -15,11 +15,15 @@ public class Main {
     public static void main(String[] args) {
         int[] Insertion = {2, 15, 7, 1, 10};
         int[] Selection = {4, 9, 5, 0, -2};
+        int[] Bubble = {6, 17, 10, 1, 0};
+                
         
         insertionsort(Insertion);
         System.out.println(Arrays.toString(Insertion));
         selectionsort(Selection);
         System.out.println(Arrays.toString(Selection));
+        bubblesort(Bubble);
+        System.out.println(Arrays.toString(Bubble));
         
     }
     
@@ -55,5 +59,22 @@ public class Main {
             }
         }
         
+    }
+    
+    public static void bubblesort (int values[]){
+        boolean not_sorted = true;
+        while (not_sorted){
+            not_sorted = false;
+            for(int i = 1; i < values.length; i++){
+                if(values[i] < values[i - 1]){
+                    int temp = values [i];
+                    values [i] = values [i -1];
+                    values [i -1] = temp;
+                    
+                    not_sorted = true;
+                }
+                
+            }
+        }
     }
 }
