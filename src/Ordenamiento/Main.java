@@ -17,6 +17,9 @@ public class Main {
         int[] Selection = {4, 9, 5, 0, -2};
         int[] Bubble = {6, 17, 10, 1, 0};
         int[] Heap = {1, 0, 24, 18, -2, 10};
+        int[] Quick = {2, 23, 10, 5, 1, 0};
+        int[] Merge = {5, 10, 2, 1, 7};
+        int[] SMerge = new int[Merge.length];
         
                 
         
@@ -30,6 +33,14 @@ public class Main {
         System.out.println(Arrays.toString(Heap));
         System.out.println(removeTopItem(Heap, Heap.length));
         System.out.println(Arrays.toString(Heap));
+        //System.out.println(Arrays.toString(Quick));
+        //quicksort(Quick,0, Quick.length -1);
+        //System.out.println(Arrays.toString(Quick));
+        System.out.println(Arrays.toString(Merge));
+        mergesort(Merge, SMerge, 0, Merge.length -1);
+        System.out.println(Arrays.toString(Merge));
+        
+        
         
     }
     
@@ -139,5 +150,80 @@ public class Main {
         
         
         
+    }
+    /*public static  void quicksort (int values[], int start, int end){
+        // If the list has no more than one element, it´s sorted.
+        if(start >= end){
+            return; 
+        }
+        // Use the first element as the dividing item
+        int divider = values[start];
+        
+        // Move items < divider to the front of the array and
+        // items >= divider to the end of the array.
+        Stack<Integer> before = new Stack<Integer>();
+        Stack<Integer> after = new Stack<Integer>();
+        
+        for(int i = start +1; i <= end; i++){
+            if(values[i] < divider){
+                before.push(values[i]);
+            }
+            else{
+                after.push(values[i]);
+            }
+        }
+        int i = start;
+        while(!before.empty()){
+            values[i++] = before.pop();
+            
+        }
+        int middle = i++;
+        values[middle] = divider;
+        while(!after.empty()){
+            values[i++] = after.pop();
+        }
+        // Recursively sort the two halves.
+        quicksort(values, start, middle -1);
+        quicksort(values, start, middle + 1);
+    }*/
+    
+    public static void mergesort(int values[], int scratch[], int start, int end){
+        if(start >= end){
+            return;
+        }
+        int midpoint = (start + end)/ 2;
+        mergesort(values, scratch, start, midpoint);
+        mergesort(values, scratch, midpoint + 1, end);
+        
+        //Merge the two halves
+        int leftIndex = start;
+        int rightIndex = midpoint + 1;
+        int scratchIndex = leftIndex;
+        while(leftIndex <= midpoint && rightIndex <= end){
+            if(values[leftIndex] <= values[rightIndex]){
+                scratch[scratchIndex] = values[leftIndex];
+                leftIndex = leftIndex + 1;
+                
+            }
+            else{
+                scratch[scratchIndex] = values[rightIndex];
+                rightIndex = rightIndex + 1;
+                
+            }
+            scratchIndex = scratchIndex + 1;
+        }
+        // Finish copying whichever half is not empty
+        for(int i = leftIndex; i <= midpoint; i++){
+            scratch[scratchIndex] = values[i];
+            scratchIndex = scratchIndex + 1;
+        }
+        for(int i = rightIndex; i <= end; i++){
+            scratch[scratchIndex] = values[i];
+            scratchIndex = scratchIndex + 1;
+        }
+        //Copy the values back to the original array
+        for(int i = start; i <= end; i++){
+            values[i] = scratch[i];
+        }
     }
 }
