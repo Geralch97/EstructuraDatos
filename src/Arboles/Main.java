@@ -35,6 +35,16 @@ public class Main {
         root.postorderTraversal();
         System.out.println();
         root.depthFirstTraversal();
+        System.out.println();
+        
+        BinaryNode raiz = new BinaryNode (3);
+        raiz.addNode(5);
+        raiz.addNode(2);
+        raiz.addNode(9);
+        raiz.addNode(0);
+        raiz.inorderTraversal();
+        System.out.println();
+       
     }
     
 }
