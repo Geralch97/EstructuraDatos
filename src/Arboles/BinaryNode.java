@@ -92,5 +92,43 @@ public class BinaryNode {
         
         
     }
+    public void addNode (int NewValue){
+        if(NewValue < this.value){
+            if(this.leftChild == null){
+                this.leftChild = new BinaryNode (NewValue);
+            }
+            else{
+                this.leftChild.addNode(NewValue);
+            }
+        }
+        else if(NewValue > this.value){
+            if(this.rightChild == null){
+                this.rightChild = new BinaryNode (NewValue);
+            }
+            else{
+                this.rightChild.addNode(NewValue);
+            }
+            
+        }
+        
+    }
+    public BinaryNode findNode (int target){
+        if(target == this.value){
+            return this;
+        }
+        if(target < this.value){
+            if(this.leftChild == null){
+                return null;
+            }
+            return this.leftChild.findNode(target);
+        }
+        else{
+            if(this.rightChild == null){
+                return null;
+            }
+            return this.rightChild.findNode(target);
+        }
+    }
+    
     
 }
