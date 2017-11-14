@@ -44,7 +44,8 @@ public class Main {
         raiz.addNode(0);
         raiz.inorderTraversal();
         System.out.println();
-       
+        BinaryNode r = raiz.findNode(5);
+        System.out.println(r.value);
     }
     
 }
