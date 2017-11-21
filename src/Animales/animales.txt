@@ -1,0 +1,3 @@
+Es mamifero?#
+Es reptil?#Tiene cuello largo?#
+Es un buho?#Es una lagartija?#Es un perro?#Es una jirafa?#
